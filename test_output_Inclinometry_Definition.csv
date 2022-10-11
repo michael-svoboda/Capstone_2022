@@ -1,0 +1,49 @@
+UWI,pass_#,item_#,mnemonic,unit,value,descr
+100080306119W500,1,0,MD,M,,Measured Depth              {F}
+100080306119W500,1,1,TVD,M,,Ture Vertical Depth         {F}
+100080306119W500,1,2,AZIM,DEG,,Borehole Azimuth            {F}
+100080306119W500,1,3,DEVI,DEG,,Borehole Deviation          {F}
+100080306119W500,1,4,YOFF,M,,Displacement in EW direction{F}
+100080306119W500,1,5,XOFF,M,,Displacement in NW direction{F}
+100080306119W500,2,0,MD,M,,Measured Depth              {F}
+100080306119W500,2,1,TVD,M,,Ture Vertical Depth         {F}
+100080306119W500,2,2,AZIM,DEG,,Borehole Azimuth            {F}
+100080306119W500,2,3,DEVI,DEG,,Borehole Deviation          {F}
+100080306119W500,2,4,YOFF,M,,Displacement in EW direction{F}
+100080306119W500,2,5,XOFF,M,,Displacement in NW direction{F}
+100080306119W500,3,0,MD,M,,Measured Depth              {F}
+100080306119W500,3,1,TVD,M,,Ture Vertical Depth         {F}
+100080306119W500,3,2,AZIM,DEG,,Borehole Azimuth            {F}
+100080306119W500,3,3,DEVI,DEG,,Borehole Deviation          {F}
+100080306119W500,3,4,YOFF,M,,Displacement in EW direction{F}
+100080306119W500,3,5,XOFF,M,,Displacement in NW direction{F}
+100080306119W500,4,0,MD,M,,Measured Depth              {F}
+100080306119W500,4,1,TVD,M,,Ture Vertical Depth         {F}
+100080306119W500,4,2,AZIM,DEG,,Borehole Azimuth            {F}
+100080306119W500,4,3,DEVI,DEG,,Borehole Deviation          {F}
+100080306119W500,4,4,YOFF,M,,Displacement in EW direction{F}
+100080306119W500,4,5,XOFF,M,,Displacement in NW direction{F}
+100082806118W500,1,0,MD,M,,Measured Depth              {F}
+100082806118W500,1,1,TVD,M,,Ture Vertical Depth         {F}
+100082806118W500,1,2,AZIM,DEG,,Borehole Azimuth            {F}
+100082806118W500,1,3,DEVI,DEG,,Borehole Deviation          {F}
+100082806118W500,1,4,YOFF,M,,Displacement in EW direction{F}
+100082806118W500,1,5,XOFF,M,,Displacement in NW direction{F}
+100082806118W500,2,0,MD,M,,Measured Depth              {F}
+100082806118W500,2,1,TVD,M,,Ture Vertical Depth         {F}
+100082806118W500,2,2,AZIM,DEG,,Borehole Azimuth            {F}
+100082806118W500,2,3,DEVI,DEG,,Borehole Deviation          {F}
+100082806118W500,2,4,YOFF,M,,Displacement in EW direction{F}
+100082806118W500,2,5,XOFF,M,,Displacement in NW direction{F}
+100082806118W500,3,0,MD,M,,Measured Depth              {F}
+100082806118W500,3,1,TVD,M,,Ture Vertical Depth         {F}
+100082806118W500,3,2,AZIM,DEG,,Borehole Azimuth            {F}
+100082806118W500,3,3,DEVI,DEG,,Borehole Deviation          {F}
+100082806118W500,3,4,YOFF,M,,Displacement in EW direction{F}
+100082806118W500,3,5,XOFF,M,,Displacement in NW direction{F}
+100082806118W500,4,0,MD,M,,Measured Depth              {F}
+100082806118W500,4,1,TVD,M,,Ture Vertical Depth         {F}
+100082806118W500,4,2,AZIM,DEG,,Borehole Azimuth            {F}
+100082806118W500,4,3,DEVI,DEG,,Borehole Deviation          {F}
+100082806118W500,4,4,YOFF,M,,Displacement in EW direction{F}
+100082806118W500,4,5,XOFF,M,,Displacement in NW direction{F}
