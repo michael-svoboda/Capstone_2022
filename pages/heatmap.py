@@ -3,7 +3,7 @@ dash.register_page(__name__, path="/heatmap")
 from dash import Dash, dcc, html, Input, Output, callback
 import plotly.express as px
 import pandas as pd
-import data
+#import data
 
 df = px.data.gapminder()
 all_continents = df.continent.unique()

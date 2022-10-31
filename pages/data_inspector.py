@@ -7,11 +7,11 @@ from dash import Dash,dash_table, dcc, html, Input, Output, callback
 import plotly.express as px
 import pandas as pd
 
-import data
+#import data
 
 #df = px.data.medals_wide(indexed=True)
 
-oil_prod_data = pd.read_csv("./data/oil_prod_data.csv", header = 0)
+oil_prod_data = pd.read_csv("../data/oil_prod_data.csv", header = 0)
 oil_prod_data["id"] = oil_prod_data['Unique Well ID']
 unique_well_ids = oil_prod_data['Unique Well ID'].unique().tolist()
 unique_section_ids = oil_prod_data['Section'].unique().tolist()

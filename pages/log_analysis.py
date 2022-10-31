@@ -11,7 +11,7 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import numpy as np
 import copy
-import data
+#import data
 
 from dash import Dash, dcc, html, Input, Output
 import plotly.express as px
@@ -22,7 +22,7 @@ def get_unique_well_list(df) :
     unique_UWI_list = df['UWI'].unique().tolist()
     return unique_UWI_list
 
-df = pd.read_csv('data/databases/curves_values.csv') # replace with your own data source
+df = pd.read_csv('../data/databases/curves_values.csv') # replace with your own data source
 unique_UWI_list = get_unique_well_list(df)
 log_list = df.columns.to_list()
 
@@ -41,7 +41,7 @@ controls = dbc.Card(
         dcc.Dropdown(
                             id="log_dropdown",
                             options = [{"label": x, "value": x} for x in log_list],
-                            value = ['GR', 'CALI', 'SP'],
+                            value = ['GR', 'SP'],
                             multi = True,
                             #labelStyle={'display': 'inline-block'}
                         ),
@@ -68,11 +68,19 @@ layout = dbc.Container([
                 ),
                 dbc.Col(
                     dcc.Graph(
-                        id="scatter-plot",
+                        id="track_1",
+                        ),
+                    width = 5,
+
+                ),
+                dbc.Col(
+                    dcc.Graph(
+                        id="track_2",
                         ),
                     width = 5,
 
                 )
+
             ]
         ),
     
@@ -83,7 +91,7 @@ layout = dbc.Container([
 
 
 @callback(
-    Output("scatter-plot", "figure"),
+    Output("track_1", "figure"),
     Input("range-slider", "value"),
     Input("well_dropdown", "value"),
     State("log_dropdown", "value")
@@ -93,13 +101,14 @@ def update_graph(slider_range, well_names, logs):
 
     print('LOGGERS: ', logs)
     low, high = slider_range
-    df = pd.read_csv('data/databases/curves_values.csv')
+    df = pd.read_csv('../data/databases/curves_values.csv')
     #print(well_names)
 
     if not(type(well_names) is list):
         well_names = [well_names]
 
     track_1 = make_subplots()
+    track_2 = make_subplots()
 
     # Track #1 Layout
     layout = go.Layout(
@@ -160,7 +169,7 @@ def filter_wells(log_names):
             log_names = log_names + ['UWI']
 
         # we need to filter down the df to show wells that only include the selected logs
-        df = pd.read_csv('data/databases/curves_values.csv')
+        df = pd.read_csv('../data/databases/curves_values.csv')
         df_filtered = df.loc[:, df.columns.isin(log_names)]
 
         #print('SERIES', df_filtered['GRS'].isnull().values.tolist())
