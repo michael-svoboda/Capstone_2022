@@ -41,7 +41,7 @@ controls = dbc.Card(
         dcc.Dropdown(
                             id="log_dropdown",
                             options = [{"label": x, "value": x} for x in log_list],
-                            value = ['GR', 'SP'],
+                            value = ['GR'],
                             multi = True,
                             #labelStyle={'display': 'inline-block'}
                         ),
@@ -49,9 +49,9 @@ controls = dbc.Card(
         html.P("Filter by DEPTH:"),
         dcc.RangeSlider(
                         id='range-slider',
-                        min=0, max=4000, step=25,
-                        marks={0: '0', 3000: '3000', 4000:'4000'},
-                        value=[0, 4000],
+                        min=2500, max=3500, step=25,
+                        marks={2500: '2500',2600: '2600', 2700: '2700', 2800: '2800', 2900: '2900', 3000: '3000', 3100: '3100',3200: '3200',3300: '3300',3400: '3400', 3500:'3500'},
+                        value=[3000, 3400],
                         vertical= True
                     ),
 
@@ -61,30 +61,42 @@ controls = dbc.Card(
 layout = dbc.Container([
 
     html.H4('LOGGING ANALYSIS'),
-    dbc.Row([
-                dbc.Col(
-                    controls,
-                    width = 3,
-                ),
-                dbc.Col(
-                    dcc.Graph(
-                        id="track_1",
-                        ),
-                    width = 5,
-
-                ),
-                dbc.Col(
-                    dcc.Graph(
-                        id="track_2",
-                        ),
-                    width = 5,
-
-                )
-
-            ]
-        ),
     
+    dbc.Row([
+        dbc.Col(
+                        controls,
+                        width = 2,
+                    ),
+        dbc.Card([
+            dbc.Row([
+                        dbc.Col(
+                            dcc.Graph(
+                                id="track_1",
+                                ),
+                            width = 4,
+                        ),
+                        dbc.Col(
+                            dcc.Graph(
+                                id="track_2",
+                                ),
+                            width = 4,
+                        ),
+                        dbc.Col(
+                            dcc.Graph(
+                                id="track_3",
+                                ),
+                            width = 4,
+                        )
+
+                ],
+            ),
+        ],
+        style={"width": "95rem"},
+        ),
+    ])
+
 ],
+fluid= True
 )
 
 #
@@ -92,6 +104,8 @@ layout = dbc.Container([
 
 @callback(
     Output("track_1", "figure"),
+    Output("track_2", "figure"),
+    Output("track_3", "figure"),
     Input("range-slider", "value"),
     Input("well_dropdown", "value"),
     State("log_dropdown", "value")
@@ -109,9 +123,10 @@ def update_graph(slider_range, well_names, logs):
 
     track_1 = make_subplots()
     track_2 = make_subplots()
+    track_3 = make_subplots()
 
     # Track #1 Layout
-    layout = go.Layout(
+    layout1 = go.Layout(
         title="Track 1",
         
         xaxis1=  XAxis(
@@ -140,14 +155,48 @@ def update_graph(slider_range, well_names, logs):
         ),
     )
 
+    # Track #2 Layout
+    layout2 = go.Layout(
+        title="Track 2",
+        
+        xaxis1=  XAxis(
+            title="Resisitivity (ohmm)",
+            side= 'top',
+            #overlaying= 'x',
+            position = 1
+        ),
+
+        yaxis=dict(
+            title="Depth (mKB)"
+        ),
+    )
+
+
+    # Track #3 Layout
+    layout3 = go.Layout(
+        title="Track 3",
+        
+        xaxis1=  XAxis(
+            title="Resisitivity (ohmm)",
+            side= 'top',
+            #overlaying= 'x',
+            position = 1
+        ),
+
+        yaxis=dict(
+            title="Depth (mKB)"
+        ),
+    )
     # Setting fig to use the track 1 layout, then passing into the add curves function
-    fig = go.Figure(layout=layout)
+    fig1 = go.Figure(layout=layout1)
+    fig2 = go.Figure(layout=layout2)
+    fig3 = go.Figure(layout=layout1)
 
-    track_1 = graphing.add_track_1_curves(fig, df, logs, low, high, well_names)
+    track_1 = graphing.add_track_1_curves(fig1, df, logs, low, high, well_names)
+    track_2 = graphing.add_track_2_curves(fig2, df, logs, low, high, well_names)
+    track_3 = graphing.add_track_3_curves(fig3, df, logs, low, high, well_names)
 
-
-
-    return track_1
+    return track_1, track_2, track_3
 
 @callback(
     Output("well_dropdown", "options"),
