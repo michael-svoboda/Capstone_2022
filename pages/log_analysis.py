@@ -58,13 +58,29 @@ controls = dbc.Card(
     ],
 )
 
+offcanvas = html.Div(
+    [
+        dbc.Button("Open Offcanvas", id="open-offcanvas", n_clicks=0),
+        dbc.Offcanvas(
+            html.Div(
+                controls
+            ),
+            id="offcanvas",
+            title="Title",
+            is_open=False,
+        ),
+    ]
+)
+
 layout = dbc.Container([
 
     html.H4('LOGGING ANALYSIS'),
+
+    offcanvas,
     
     dbc.Row([
         dbc.Col(
-                        controls,
+                        #controls,
                         width = 2,
                     ),
         dbc.Card([
@@ -99,8 +115,22 @@ layout = dbc.Container([
 fluid= True
 )
 
-#
+#------------------------------------------------
 
+
+
+
+@callback(
+    Output("offcanvas", "is_open"),
+    Input("open-offcanvas", "n_clicks"),
+    [State("offcanvas", "is_open")],
+)
+def toggle_offcanvas(n1, is_open):
+    if n1:
+        return not is_open
+    return is_open
+
+#--------------------------------------------------
 
 @callback(
     Output("track_1", "figure"),
@@ -153,6 +183,7 @@ def update_graph(slider_range, well_names, logs):
         yaxis=dict(
             title="Depth (mKB)"
         ),
+        #template="seaborn",
     )
 
     # Track #2 Layout
@@ -169,6 +200,7 @@ def update_graph(slider_range, well_names, logs):
         yaxis=dict(
             title="Depth (mKB)"
         ),
+        #template="seaborn",
     )
 
 
@@ -177,7 +209,7 @@ def update_graph(slider_range, well_names, logs):
         title="Track 3",
         
         xaxis1=  XAxis(
-            title="Resisitivity (ohmm)",
+            title="Porosity (%)",
             side= 'top',
             #overlaying= 'x',
             position = 1
@@ -186,6 +218,7 @@ def update_graph(slider_range, well_names, logs):
         yaxis=dict(
             title="Depth (mKB)"
         ),
+        #template="seaborn",
     )
     # Setting fig to use the track 1 layout, then passing into the add curves function
     fig1 = go.Figure(layout=layout1)

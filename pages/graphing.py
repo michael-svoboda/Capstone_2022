@@ -241,7 +241,7 @@ def add_track_3_curves(fig, df, logs, low, high, well_names):
         legend=dict(
             x=0.27,
             y=0.89,),
-        xaxis=dict(range=[-15,45]),
+        xaxis=dict(range=[0,60]),
         yaxis=dict(range=[low, high]),
         #xaxis3=dict(range=[-80, 80]),
         width=580,

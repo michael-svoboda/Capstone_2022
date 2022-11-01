@@ -5,7 +5,7 @@ import dash_bootstrap_components as dbc
 
 app = dash.Dash(
     __name__, plugins=[dl.plugins.pages],
-    external_stylesheets=[dbc.themes.BOOTSTRAP],
+    external_stylesheets=[dbc.themes.PULSE],
     suppress_callback_exceptions=True
 )
 
